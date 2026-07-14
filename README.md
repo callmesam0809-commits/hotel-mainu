@@ -35,3 +35,41 @@ if o1 == "yes":
         print(f"{o0} is not available.")
 
 print(f"Your total bill is Rs {order_total}")
+menu = {
+    "BIRYANI": 200,
+    "DOSA": 50,
+    "CHICKEN": 150,
+    "CHHOLE": 50
+}
+
+print("========== WELCOME TO SAMMY RESTAURANT ==========")
+
+for item, price in menu.items():
+    print(f"{item} : Rs {price}")
+
+order_total = 0
+
+while True:
+    order = input("\nEnter your order: ").upper()
+
+    if order in menu:
+        qty = int(input("Enter Quantity: "))
+        price = menu[order] * qty
+        order_total += price
+        print(f"{order} x {qty} = Rs {price} added.")
+    else:
+        print("Sorry! Item is not available.")
+
+    more = input("Do you want to order more? (yes/no): ").lower()
+
+    if more != "yes":
+        break
+
+gst = order_total * 0.05
+final_bill = order_total + gst
+
+print("\n========== FINAL BILL ==========")
+print(f"Subtotal : Rs {order_total}")
+print(f"GST (5%) : Rs {gst:.2f}")
+print(f"Total Bill : Rs {final_bill:.2f}")
+print("\nThank You! Visit Again 😊")
